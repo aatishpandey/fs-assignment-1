@@ -1,5 +1,5 @@
 :root {
-  font-size: 1rem;
+  font-size: 10px;
 }
 
 body,
@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 
 .form {
@@ -34,7 +34,7 @@ body {
 
 .form-label {
   align-self: flex-start;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
 }
 
 .form-btn {
@@ -50,6 +50,6 @@ body {
   cursor: pointer;
 }
 
-#hidden-div {
+.hidden-div {
   color: rgb(29, 145, 29);
 }

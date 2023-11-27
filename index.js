@@ -50,13 +50,12 @@ app.post("/signup", function (req, res) {
   });
 
   if (userExist) {
-    res
-      .status(400)
-      .send("User already exist. Please try with different email.");
+    res.status(400).json({
+      message: "User already exists. Please try with different email.",
+    });
   } else {
     USERS = [...USERS, reqBody]; //add user to USERS array
-    res.status(200).send("User added!");
-    console.log("user added", USERS);
+    res.status(200).json({ message: "User added" });
   }
   // res.send("status 200");
 });
@@ -77,7 +76,25 @@ app.post("/login", function (req, res) {
   // Also send back a token (any random string will do for now)
   // If the password is not the same, return back 401 status code to the client
 
-  res.send("login");
+  console.log(req.body);
+
+  const reqBody = req.body;
+  let userExist = false;
+  const token = "iambinod";
+
+  USERS.forEach((user) => {
+    if (user.email === reqBody.email && user.password === reqBody.password) {
+      userExist = true;
+    }
+  });
+
+  if (userExist) {
+    res.status(200).json({ token, message: "Login successful" });
+  } else {
+    res.status(401).json({ message: "user not found" });
+  }
+
+  // res.send("login");
 });
 
 app.get("/questions", function (req, res) {
